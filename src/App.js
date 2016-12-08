@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import MovieSearchBox from './components/MovieSearchBox';
+
+import tomato from '../public/tomato.ico';
+
 import './App.css';
 
 class App extends Component {
@@ -7,12 +10,13 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <img src={tomato} className="App-logo" alt="logo" />
+          <h2>Welcome to the movie guesser!</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          There's a -p- tag here
         </p>
+        <MovieSearchBox />
       </div>
     );
   }
