@@ -15,6 +15,6 @@ function mapDispachToProps(dispatch) {
   return bindActionCreators(actionCreators, dispatch);
 }
 
-const AppRedux = connect(mapStateToProps, mapDispachToProps)(Main);
+const ReduxConnect = connect(mapStateToProps, mapDispachToProps)(Main);
 
-export default AppRedux;
+export default ReduxConnect;

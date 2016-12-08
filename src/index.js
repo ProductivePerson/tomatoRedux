@@ -5,7 +5,7 @@ import './css/index.css';
 import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import store, { history } from './store';
-import AppRedux from './AppRedux';
+import ReduxConnect from './ReduxConnect';
 
 import App from './App';
 import MovieSearchBox from "./components/MovieSearchBox";
@@ -13,7 +13,7 @@ import MovieSearchBox from "./components/MovieSearchBox";
 const router = (
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={AppRedux}>
+      <Route path="/" component={ReduxConnect}>
         <IndexRoute component={App}></IndexRoute>
         <Route path="/app" component={App}></Route>
         <Route path='/index' component={MovieSearchBox}></Route>
