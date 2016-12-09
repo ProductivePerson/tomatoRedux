@@ -5,7 +5,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <MovieSearchBox />
+        <MovieSearchBox {...this.props}/>
       </div>
     );
   }

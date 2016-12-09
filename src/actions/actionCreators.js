@@ -1,15 +1,33 @@
+import * as types from './actionTypes';
+import * as api from './APIcalls';
+
 //SEARCH ACTIONS
-export function postSearch(text) {
+export function searchMovies(text) {
+  return (dispatch) => {
+    dispatch({type: types.SEND_GET});
+    return api.getMovieList(text)
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
+  };
+}
+
+export function hydrateMovies(data) {
   return {
-    type: "POST_GUESS",
-    text
+    type: types.HYDRATE_MOVIES,
+    data
+  };
+}
+
+export function searchError() {
+  return {
+    type: types.GET_ERROR
   };
 }
 
 //GUESS ACTIONS
 export function addGuess(guess) {
   return {
-    type: "ADD_GUESS",
+    type: types.ADD_GUESS,
     guess
   };
 }
@@ -17,6 +35,6 @@ export function addGuess(guess) {
 //VIEW ACTIONS
 export function toggleMovieWindow() {
   return {
-    type: "TOGGLE_MOVIE_WINDOW"
+    type: types.TOGGLE_MOVIE_WINDOW
   };
 }

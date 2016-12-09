@@ -12,14 +12,15 @@ class MovieSearchBox extends Component {
     this.setState({[e.target.name]: e.target.value});
   }
 
-  searchMovie(e) {
+  search(e) {
     e.preventDefault();
-    alert("ding ding ding");
+    
+    this.props.searchMovies(this.state.searchText);
   }
 
   render() {
     return (
-      <Form inline onSubmit={this.searchMovie}>
+      <Form inline onSubmit={this.search.bind(this)}>
         <ControlLabel>
           Search a movie here :
         </ControlLabel>
