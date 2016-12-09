@@ -6,14 +6,18 @@ class MovieSingleSmall extends Component {
     super(props);
   }
 
+  getSingleMovie() {
+    this.props.getMovie(this.props.movie.imdbID);
+  }
+
   render() {
     const { movie } = this.props;
     return (
-      <div className="MovieWindowSmall">
+      <div className="MovieWindowSmall" onClick={this.getSingleMovie.bind(this)}>
         <Col xs={6} md={4}>
-          <Image src={movie.Poster} responsive thumbnail/>
+          {/* <Image src={movie.Poster} responsive thumbnail/> */}
           <ControlLabel>
-            {movie.Title}
+            {movie.Title} [{movie.Year}]
           </ControlLabel>
         </Col>
       </div>

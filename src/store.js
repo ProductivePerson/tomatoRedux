@@ -12,7 +12,10 @@ const defaultState = {
   },
   views: {
     movie: false,
-    history: false
+    search: false,
+    history: false,
+    guess: false,
+    tomatoScore: false
   }
 };
 

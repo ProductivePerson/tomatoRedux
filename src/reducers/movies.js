@@ -2,19 +2,25 @@ import * as types from '../actions/actionTypes';
 
 function movies(state = {
     isLoading: false,
-    movie: undefined,
+    main: undefined,
     list: [],
     error: false
   }, action = null) {
 
   switch (action.type) {
-    case types.SEND_GET:
-      return Object.assign({}, {isLoading: true, error: false});
+    case types.GET_MOVIES:
+      return Object.assign({}, state, {isLoading: true, error: false});
+
     case types.HYDRATE_MOVIES:
-      console.log("ding ding ding");
-      return Object.assign({}, {isLoading: false, list: action.data, error: false});
+      return Object.assign({}, state, {isLoading: false, list: action.data, error: false});
+
+    case types.HYDRATE_MOVIE:
+      console.log("Hydrating a single movie with ", action.data);
+      return Object.assign({}, state, {isLoading: false, main: action.data, error: false});
+
     case types.GET_ERROR:
-      return Object.assign({}, {isLoading: false, error: true});
+      return Object.assign({}, state, {isLoading: false, error: true});
+
     default:
       return state;
   }

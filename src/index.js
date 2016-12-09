@@ -16,7 +16,6 @@ const router = (
       <Route path="/" component={ReduxConnect}>
         <IndexRoute component={App}></IndexRoute>
         <Route path="/app" component={App}></Route>
-        <Route path='/index' component={MovieSearchBox}></Route>
       </Route>
     </Router>
   </Provider>

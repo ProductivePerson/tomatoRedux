@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 function omdbSearch(string, list, description) {
-  let type = list ? 's' : 't',
+  let type = list ? 's' : 'i',
       plot = description ? 'long' : 'short';
 
   return `http://www.omdbapi.com/?${type}=${string.split(" ").join('+')}&plot=${plot}&r=json`;
