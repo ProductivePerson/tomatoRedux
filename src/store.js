@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers/root';
 
 const defaultState = {
-  searchResults: [],
+  movies: {list: []},
   guesses: {
     history: [],
     range: 5

@@ -5,7 +5,7 @@ import Main from './Main.js';
 
 function mapStateToProps(state) {
   return {
-    searchResults: state.searchResults,
+    movies: state.movies,
     guesses: state.guesses,
     views: state.views
   };

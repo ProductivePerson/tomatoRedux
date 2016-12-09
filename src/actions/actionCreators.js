@@ -6,12 +6,13 @@ export function searchMovies(text) {
   return (dispatch) => {
     dispatch({type: types.SEND_GET});
     return api.getMovieList(text)
-      .then((res) => console.log(res))
-      .catch((err) => console.error(err));
+      .then((res) => dispatch(hydrateMovies(res.data.Search)))
+      .catch((err) => searchError(err));
   };
 }
 
 export function hydrateMovies(data) {
+  console.log("Hydrating movies with data ", data);
   return {
     type: types.HYDRATE_MOVIES,
     data
