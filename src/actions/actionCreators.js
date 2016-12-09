@@ -2,19 +2,6 @@ import * as types from './actionTypes';
 import * as api from './APIcalls';
 
 //SEARCH ACTIONS
-export function searchMovies(text) {
-  return (dispatch) => {
-    dispatch({type: types.GET_MOVIES});
-
-    return api.getMovieList(text)
-      .then((res) => {
-        dispatch(toggleWindow("search"));
-        dispatch(hydrateMovies(res.data.Search));
-      })
-      .catch((err) => searchError(err));
-  };
-}
-
 export function getMovie(id) {
   return (dispatch) => {
     console.log("Entering the movieGet");
@@ -50,12 +37,6 @@ export function hydrateMovie(data) {
   };
 }
 
-export function searchError() {
-  return {
-    type: types.GET_ERROR
-  };
-}
-
 //GUESS ACTIONS
 export function addGuess(guess) {
   return {
@@ -66,9 +47,35 @@ export function addGuess(guess) {
 
 //VIEW ACTIONS
 
+export function searchMovies(text) {
+  return (dispatch) => {
+    dispatch({type: types.GET_MOVIES});
+    dispatch(newSearch());
+
+    return api.getMovieList(text)
+      .then((res) => {
+        dispatch(toggleWindow("search"));
+        dispatch(hydrateMovies(res.data.Search));
+      })
+      .catch((err) => searchError(err));
+  };
+}
+
 export function toggleWindow(windowType) {
   return {
     type: types.TOGGLE_WINDOW,
     windowType
+  };
+}
+
+export function newSearch() {
+  return {
+    type: types.NEW_SEARCH
+  };
+}
+
+export function searchError() {
+  return {
+    type: types.GET_ERROR
   };
 }
