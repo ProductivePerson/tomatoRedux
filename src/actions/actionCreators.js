@@ -25,7 +25,8 @@ export function getMovie(id) {
         dispatch(hydrateMovie(res.data));
         console.log("The next move should be to show the movie");
         dispatch(selectMovie());
-        // dispatch(toggleWindow("game"));
+        console.log("Afterwards we start the game");
+        dispatch(toggleWindow("game"));
       })
       .catch(err => searchError(err));
   };

@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore} from 'react-router-redux';
 import thunk from 'redux-thunk';
@@ -14,12 +14,14 @@ const defaultState = {
     movie: false,
     search: false,
     history: false,
-    guess: false,
+    game: false,
     tomatoScore: false
   }
 };
 
-const store = createStore(rootReducer, defaultState, applyMiddleware(thunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(rootReducer, defaultState, composeEnhancers(applyMiddleware(thunk)));
 
 export const history = syncHistoryWithStore(browserHistory, store);
 export default store;
