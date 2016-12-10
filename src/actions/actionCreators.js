@@ -2,19 +2,29 @@ import * as types from './actionTypes';
 import * as api from './APIcalls';
 
 //SEARCH ACTIONS
+
+export function searchMovies(text) {
+  return (dispatch) => {
+    dispatch(newSearch());
+
+    return api.getMovieList(text)
+      .then((res) => {
+        dispatch(toggleWindow("search"));
+        dispatch(hydrateMovies(res.data.Search));
+      })
+      .catch((err) => searchError(err));
+  };
+}
+
 export function getMovie(id) {
   return (dispatch) => {
-    console.log("Entering the movieGet");
-
-    dispatch(toggleWindow("search"));
-    dispatch({type: types.GET_MOVIES});
 
     return api.getSingleMovie(id)
       .then((res) => {
         console.log("Successfully got a single movie", res);
         dispatch(hydrateMovie(res.data));
         console.log("The next move should be to show the movie");
-        dispatch(toggleWindow("movie"));
+        dispatch(selectMovie());
         // dispatch(toggleWindow("game"));
       })
       .catch(err => searchError(err));
@@ -47,20 +57,6 @@ export function addGuess(guess) {
 
 //VIEW ACTIONS
 
-export function searchMovies(text) {
-  return (dispatch) => {
-    dispatch({type: types.GET_MOVIES});
-    dispatch(newSearch());
-
-    return api.getMovieList(text)
-      .then((res) => {
-        dispatch(toggleWindow("search"));
-        dispatch(hydrateMovies(res.data.Search));
-      })
-      .catch((err) => searchError(err));
-  };
-}
-
 export function toggleWindow(windowType) {
   return {
     type: types.TOGGLE_WINDOW,
@@ -71,6 +67,12 @@ export function toggleWindow(windowType) {
 export function newSearch() {
   return {
     type: types.NEW_SEARCH
+  };
+}
+
+export function selectMovie() {
+  return {
+    type: types.SELECT_MOVIE
   };
 }
 

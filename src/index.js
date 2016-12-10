@@ -8,7 +8,6 @@ import store, { history } from './store';
 import ReduxConnect from './ReduxConnect';
 
 import App from './App';
-import MovieSearchBox from "./components/MovieSearchBox";
 
 const router = (
   <Provider store={store}>

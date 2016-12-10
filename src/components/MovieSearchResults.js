@@ -20,7 +20,7 @@ class MovieSearchResults extends Component {
             .filter(movie => movie.Type === "movie")
             .map((movie, idx) =>
             <Row key={idx}>
-              <MovieSingleSmall movie={movie} getMovie = {this.props.getMovie}/>
+              <MovieSingleSmall movie={movie} getMovie= {this.props.getMovie}/>
             </Row>
           )}
         </Grid>

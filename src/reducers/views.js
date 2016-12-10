@@ -11,13 +11,14 @@ function views(state = {
 }, action = null) {
 
   switch (action.type) {
-    case types.GET_MOVIES:
-      return Object.assign({}, state, {isLoading: true, error: false});
-
     case types.NEW_SEARCH:
       return Object.assign({}, state, {
-        isLoading: true, error: false,
-        search: true, movie: false, guess: false
+        isLoading: true, error: false, movie: false, guess: false
+      });
+
+    case types.SELECT_MOVIE:
+      return Object.assign({}, state, {
+        isLoading: false, error: false, movie: true, guess: true, search: false
       });
 
     case types.TOGGLE_WINDOW:
