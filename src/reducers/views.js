@@ -13,13 +13,13 @@ function views(state = {
     case types.NEW_SEARCH:
       console.log("How many times is this called?");
       return Object.assign({}, state, {
-        isLoading: true, error: false, movie: false
+        isLoading: true, error: false, movie: false, game: false
       });
 
     case types.SELECT_MOVIE:
       console.log("You know this is called what is the problem?");
       return Object.assign({}, state, {
-        isLoading: false, error: false, movie: true, search: false
+        isLoading: false, error: false, movie: true, search: false, game: true
       });
 
     case types.TOGGLE_WINDOW:

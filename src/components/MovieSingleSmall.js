@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { Image, ControlLabel, Col} from 'react-bootstrap';
 
 class MovieSingleSmall extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   getSingleMovie() {
     this.props.getMovie(this.props.movie.imdbID);
   }

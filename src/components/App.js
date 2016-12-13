@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import MovieSearchBox from './components/MovieSearchBox';
-import MovieSearchResults from './components/MovieSearchResults';
-import MovieSingleLarge from './components/MovieSingleLarge';
-import GuessWindow from './components/GuessWindow';
+import MovieSearchBox from './MovieSearchBox';
+import MovieSearchResults from './MovieSearchResults';
+import MovieSingleLarge from './MovieSingleLarge';
+import GuessWindow from './GuessWindow';
 
 class App extends Component {
   render() {
     const { views } = this.props;
 
-    console.log("Rendering with props ", this.props.views);
     return (
       <div>
         {!views.search && <MovieSearchBox {...this.props}/>}
