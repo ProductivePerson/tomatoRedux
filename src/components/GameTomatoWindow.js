@@ -22,11 +22,11 @@ class GameTomatoWindow extends Component {
           { showAnswer } = this.state;
     return (
       <div id="Guess-Description">
-        <img src={showAnswer ? this.showTomatoImg : ""} />
+        <img src={this.state.showAnswer ? this.showTomatoImg : ""} />
         <p>Tomato Score: {showAnswer ? movie.tomatoMeter : "??"}%</p>
         <div id="Movie-Text-Box">
           <p>
-            {/* {movie.Plot} */}hahaha
+            {movie.Plot}hahaha
           </p>
         </div>
       </div>

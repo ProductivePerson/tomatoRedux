@@ -33,7 +33,7 @@ class GuessWindow extends Component {
 
     return (
       <div id="Guess-Window">
-        <GameTomatoWindow movie={this.props.movie.main} />
+        <GameTomatoWindow movie={this.props.movies.main} />
         <div id="Guess-Input">
           <Form onSubmit={this.guessScore.bind(this)}>
             <FormControl type="number" value={this.state.userGuess}
