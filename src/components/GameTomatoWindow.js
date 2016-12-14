@@ -1,32 +1,35 @@
 import React, { Component } from 'react';
+import certified from "../../public/certified.png";
+import fresh from "../../public/fresh.png";
+import rotten from "../../public/rotten.png";
+import neutral from "../../public/neutral.png";
 
 class GameTomatoWindow extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {showAnswer: false, tomatoImg: ""};
+    this.state = {tomatoImg: ""};
   }
   showTomatoImg() {
-    const { tomatoMeter } = this.props.movie;
-
-    if (tomatoMeter > 84)
-      return "../public/fresh.png";
-    else if (tomatoMeter < 60)
-      return "../public/rotten.png";
-    else {
-      return "../public/neutral.png";
+    switch (this.props.movie.tomatoImage) {
+      case "fresh":
+        return fresh;
+      case "certified":
+        return certified;
+      case "rotten":
+        return rotten;
     }
   }
   render() {
-    const { movie } = this.props,
-          { showAnswer } = this.state;
+    const { movie, rightAnswer } = this.props;
+
     return (
       <div id="Guess-Description">
-        <img src={this.state.showAnswer ? this.showTomatoImg : ""} />
-        <p>Tomato Score: {showAnswer ? movie.tomatoMeter : "??"}%</p>
+        <img src={rightAnswer !== undefined ? this.showTomatoImg() : ""} />
+        <p>Tomato Score: {rightAnswer !== undefined ? movie.tomatoMeter : "??"}%</p>
         <div id="Movie-Text-Box">
           <p>
-            {movie.Plot}hahaha
+            {rightAnswer !== undefined ? movie.tomatoConsensus : movie.Plot}
           </p>
         </div>
       </div>

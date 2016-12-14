@@ -14,8 +14,7 @@ const defaultState = {
     movie: false,
     search: false,
     history: false,
-    game: false,
-    tomatoScore: false
+    game: false
   }
 };
 

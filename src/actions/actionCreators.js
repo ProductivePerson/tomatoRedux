@@ -23,7 +23,6 @@ export function getMovie(id) {
       .then((res) => {
         console.log("Successfully got a single movie", res);
         dispatch(hydrateMovie(res.data));
-        console.log("The next move should be to show the movie");
         dispatch(selectMovie());
       })
       .catch(err => searchError(err));
@@ -47,10 +46,11 @@ export function hydrateMovie(data) {
 }
 
 //GUESS ACTIONS
-export function addGuess(guess) {
+export function addGuess(guess, movie) {
   return {
     type: types.ADD_GUESS,
-    guess
+    guess,
+    movie
   };
 }
 

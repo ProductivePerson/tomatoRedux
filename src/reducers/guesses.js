@@ -1,8 +1,12 @@
-// import * as types from '../actions/actionTypes';
+import * as types from '../actions/actionTypes';
 
 function guesses(state = [], action = null) {
-
-  return state;
+  switch (action.type) {
+    case types.ADD_GUESS:
+      return [...state, {guess: action.guess}];
+    default:
+      return state;
+  }
 }
 
 export default guesses;

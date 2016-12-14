@@ -3,12 +3,13 @@ import { Form, FormControl, ControlLabel, Checkbox,
   OverlayTrigger, Tooltip} from 'react-bootstrap';
 
 import GameTomatoWindow from './GameTomatoWindow';
+// import FeedbackWindow from './FeedbackWindow';
 
-class GuessWindow extends Component {
+class Game extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {guessRange: 5, userGuess: "", proMode: false};
+    this.state = {userGuess: "", proMode: false, rightAnswer: undefined};
   }
 
   handleChange(e) {
@@ -20,8 +21,20 @@ class GuessWindow extends Component {
     this.setState({proMode: !this.state.proMode});
   }
 
-  guessScore() {
-    console.log("Guessing with a score of ", this.state.userGuess);
+  checkAnswer(score) {
+    const { tomatoMeter } = this.props.movies.main;
+
+    return this.state.proMode ?
+        Math.floor(score) === tomatoMeter
+      : tomatoMeter-5 <= score && tomatoMeter+5 >=score;
+  }
+
+  guessScore(e) {
+    e.preventDefault();
+    let isCorrectGuess = this.checkAnswer(this.state.userGuess);
+
+    this.props.addGuess(isCorrectGuess, this.props.movies.main);
+    this.setState({rightAnswer: this.checkAnswer(isCorrectGuess)});
   }
 
   render() {
@@ -33,8 +46,10 @@ class GuessWindow extends Component {
 
     return (
       <div id="Guess-Window">
-        <GameTomatoWindow movie={this.props.movies.main} />
-        <div id="Guess-Input">
+        <GameTomatoWindow movie={this.props.movies.main} rightAnswer={this.state.rightAnswer}/>
+        {/* <FeedbackWindow movie={this.props.movies.main} rightAnswer={this.state.rightAnswer} /> */}
+
+        {!this.state.rightAnswer && <div id="Guess-Input">
           <Form onSubmit={this.guessScore.bind(this)}>
             <FormControl type="number" value={this.state.userGuess}
               name="userGuess" onChange={this.handleChange.bind(this)} required
@@ -45,10 +60,10 @@ class GuessWindow extends Component {
               </Checkbox>
             </OverlayTrigger>
           </Form>
-        </div>
+        </div>}
       </div>
     );
   }
 }
 
-export default GuessWindow;
+export default Game;
