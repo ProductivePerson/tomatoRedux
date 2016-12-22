@@ -8,7 +8,7 @@ import store, { history } from './store';
 import ReduxConnect from './ReduxConnect';
 
 import App from './components/App';
-import GameTomatoWindow from './components/GameTomatoWindow';
+import RottenWindow from './components/RottenWindow';
 
 const router = (
   <Provider store={store}>
@@ -16,7 +16,7 @@ const router = (
       <Route path="/" component={ReduxConnect}>
         <IndexRoute component={App}></IndexRoute>
         <Route path="/app" component={App}></Route>
-        <Route path='test' component={GameTomatoWindow}></Route>
+        <Route path='test' component={RottenWindow}></Route>
       </Route>
     </Router>
   </Provider>

@@ -4,7 +4,7 @@ import fresh from "../../public/fresh.png";
 import rotten from "../../public/rotten.png";
 import neutral from "../../public/neutral.png";
 
-class GameTomatoWindow extends Component {
+class RottenWindow extends Component {
   constructor(props) {
     super(props);
 
@@ -25,8 +25,8 @@ class GameTomatoWindow extends Component {
 
     return (
       <div id="Guess-Description">
-        <img src={rightAnswer !== undefined ? this.showTomatoImg() : ""} />
         <p>Tomato Score: {rightAnswer !== undefined ? movie.tomatoMeter : "??"}%</p>
+        <img id="Tomato-Icon" src={rightAnswer !== undefined ? this.showTomatoImg() : ""} />
         <div id="Movie-Text-Box">
           <p>
             {rightAnswer !== undefined ? movie.tomatoConsensus : movie.Plot}
@@ -37,4 +37,4 @@ class GameTomatoWindow extends Component {
   }
 }
 
-export default GameTomatoWindow;
+export default RottenWindow;

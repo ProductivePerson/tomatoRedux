@@ -1,11 +1,17 @@
 import * as types from './actionTypes';
 import * as api from './APIcalls';
 
+//TODO - remove temp data;
+import { searchResults, movieResults } from '../tempData';
+
 //SEARCH ACTIONS
 
 export function searchMovies(text) {
   return (dispatch) => {
     dispatch(newSearch());
+
+    // dispatch(toggleWindow("search"));
+    // dispatch(hydrateMovies(JSON.parse(searchResults)));
 
     return api.getMovieList(text)
       .then((res) => {
@@ -19,6 +25,8 @@ export function searchMovies(text) {
 export function getMovie(id) {
   return (dispatch) => {
 
+    // dispatch(hydrateMovie(JSON.parse(movieResults)));
+    // dispatch(selectMovie());
     return api.getSingleMovie(id)
       .then((res) => {
         console.log("Successfully got a single movie", res);

@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Form, FormControl, ControlLabel, Checkbox,
   OverlayTrigger, Tooltip} from 'react-bootstrap';
 
-import GameTomatoWindow from './GameTomatoWindow';
-// import FeedbackWindow from './FeedbackWindow';
+import RottenWindow from './RottenWindow';
+import FeedbackWindow from './FeedbackWindow';
+
+import '../css/Game.css';
 
 class Game extends Component {
   constructor(props) {
@@ -23,10 +25,11 @@ class Game extends Component {
 
   checkAnswer(score) {
     const { tomatoMeter } = this.props.movies.main;
+    score = Number(score);
 
     return this.state.proMode ?
-        Math.floor(score) === tomatoMeter
-      : tomatoMeter-5 <= score && tomatoMeter+5 >=score;
+        Math.floor(score) == tomatoMeter
+      : tomatoMeter-5 <= score/1 && tomatoMeter/1+5 >= score/1;
   }
 
   guessScore(e) {
@@ -34,7 +37,7 @@ class Game extends Component {
     let isCorrectGuess = this.checkAnswer(this.state.userGuess);
 
     this.props.addGuess(isCorrectGuess, this.props.movies.main);
-    this.setState({rightAnswer: this.checkAnswer(isCorrectGuess)});
+    this.setState({rightAnswer: isCorrectGuess});
   }
 
   render() {
@@ -44,23 +47,26 @@ class Game extends Component {
         </Tooltip>
     );
 
+    const guessInput = (<div id="Guess-Input">
+      <Form onSubmit={this.guessScore.bind(this)}>
+        <FormControl type="number" value={this.state.userGuess}
+          name="userGuess" onChange={this.handleChange.bind(this)} required
+          placeholder="Enter Tomatoscore" />
+        <OverlayTrigger placement="top" overlay={proTooltip}>
+          <Checkbox checked={this.state.proMode} onClick={this.togglePro.bind(this)}>
+            Pro-mode
+          </Checkbox>
+        </OverlayTrigger>
+      </Form>
+    </div>);
+
+
     return (
       <div id="Guess-Window">
-        <GameTomatoWindow movie={this.props.movies.main} rightAnswer={this.state.rightAnswer}/>
-        {/* <FeedbackWindow movie={this.props.movies.main} rightAnswer={this.state.rightAnswer} /> */}
 
-        {!this.state.rightAnswer && <div id="Guess-Input">
-          <Form onSubmit={this.guessScore.bind(this)}>
-            <FormControl type="number" value={this.state.userGuess}
-              name="userGuess" onChange={this.handleChange.bind(this)} required
-              placeholder="Enter Tomatoscore" />
-            <OverlayTrigger placement="top" overlay={proTooltip}>
-              <Checkbox checked={this.state.proMode} onClick={this.togglePro.bind(this)}>
-                Pro-mode
-              </Checkbox>
-            </OverlayTrigger>
-          </Form>
-        </div>}
+        <RottenWindow movie={this.props.movies.main} rightAnswer={this.state.rightAnswer}/>
+        {this.state.rightAnswer !== undefined && <FeedbackWindow movie={this.props.movies.main} rightAnswer={this.state.rightAnswer} />}
+        {this.state.rightAnswer === undefined && guessInput}
       </div>
     );
   }

@@ -11,9 +11,15 @@ class App extends Component {
     return (
       <div>
         {!views.search && <MovieSearchBox {...this.props}/>}
-        {views.movie && <MovieSingleLarge movie={this.props.movies.main}/>}
         {views.search && <MovieSearchResults {...this.props}/>}
-        {views.game && <Game {...this.props} />}
+        <div id="Game-Window">
+          <div id="Movie-Info-Window">
+            {views.movie && <MovieSingleLarge movie={this.props.movies.main}/>}
+          </div>
+          <div id="Game-Info-Window">
+            {views.game && <Game {...this.props} />}
+          </div>
+        </div>
       </div>
     );
   }

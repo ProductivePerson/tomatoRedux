@@ -1,0 +1,15 @@
+#Game-Window {
+  display: inline-block;
+}
+
+#Game-Info-Window {
+  display: inline-block;
+  width: 35%;
+  padding-right: 15%;
+}
+
+#Movie-Info-Window {
+  display: inline-block;
+  float: left;
+  padding-left: 20%;
+}

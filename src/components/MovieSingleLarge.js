@@ -11,12 +11,12 @@ class MovieSingleLarge extends Component {
 
     return (
       <div className="MovieWindowLarge">
-        <div>
-          <Image src={movie.Poster} className="Poster" responsive thumbnail/>
-        </div>
         <ControlLabel>
           {movie.Title} [{movie.Year}]
         </ControlLabel>
+        <div>
+          <Image src={movie.Poster} className="Poster" responsive thumbnail/>
+        </div>
       </div>
     );
   }
