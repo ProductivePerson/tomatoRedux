@@ -28,7 +28,7 @@ class RottenWindow extends Component {
     return (
       <div id="Movie-Description">
         <p>Tomato Score: {rightAnswer !== undefined ? movie.tomatoMeter : "??"}%</p>
-        <img id="Tomato-Icon" src={rightAnswer !== undefined ? this.showTomatoImg() : ""} alt="" />
+        <img id="Tomato-Icon" src={rightAnswer !== undefined ? this.showTomatoImg() : fresh} alt="" />
         <div id="Movie-Info-Text">
           <p>
             {rightAnswer !== undefined ? movie.tomatoConsensus : movie.Plot}

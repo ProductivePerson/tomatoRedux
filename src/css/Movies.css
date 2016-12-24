@@ -1,0 +1,16 @@
+.Movie-Search-Results {
+  width: 60%;
+  padding-left: 22%;
+  padding-top: 3%;
+}
+
+.Movie-Thumbnail {
+  width: 125px;
+}
+
+.Movie-Window-Small {
+  float: left;
+  width: 140px;
+  margin-right: 10px;
+  border-style: ridge;
+}

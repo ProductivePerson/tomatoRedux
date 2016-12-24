@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Image, ControlLabel, Col} from 'react-bootstrap';
+import "../css/Movies.css";
 
 class MovieSingleSmall extends Component {
   getSingleMovie() {
@@ -9,13 +10,13 @@ class MovieSingleSmall extends Component {
   render() {
     const { movie } = this.props;
     return (
-      <div className="MovieWindowSmall" onClick={this.getSingleMovie.bind(this)}>
-        <Col xs={6} md={4}>
-          {/* <Image src={movie.Poster} responsive thumbnail/> */}
+      <div className="Movie-Window-Small" onClick={this.getSingleMovie.bind(this)}>
+        {/* <Col xs={6} md={4}> */}
+          <Image className="Movie-Thumbnail" src={movie.Poster} responsive thumbnail/>
           <ControlLabel>
             {movie.Title} [{movie.Year}]
           </ControlLabel>
-        </Col>
+        {/* </Col> */}
       </div>
     );
   }
