@@ -1,0 +1,18 @@
+#Movie-Description {
+  display: inline-block;
+}
+
+#Tomato-Icon {
+  display: inline-block;
+  float: left;
+  width: 80px;
+  height: 80px;
+  padding-left: 5%
+}
+
+#Movie-Info-Text {
+  display: inline-block;
+  float: right;
+  width: 65%;
+  padding-right: 10%;
+}

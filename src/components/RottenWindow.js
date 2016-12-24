@@ -4,6 +4,8 @@ import fresh from "../../public/fresh.png";
 import rotten from "../../public/rotten.png";
 import neutral from "../../public/neutral.png";
 
+import "../css/Rotten.css";
+
 class RottenWindow extends Component {
   constructor(props) {
     super(props);
@@ -24,10 +26,10 @@ class RottenWindow extends Component {
     const { movie, rightAnswer } = this.props;
 
     return (
-      <div id="Guess-Description">
+      <div id="Movie-Description">
         <p>Tomato Score: {rightAnswer !== undefined ? movie.tomatoMeter : "??"}%</p>
-        <img id="Tomato-Icon" src={rightAnswer !== undefined ? this.showTomatoImg() : ""} />
-        <div id="Movie-Text-Box">
+        <img id="Tomato-Icon" src={rightAnswer !== undefined ? this.showTomatoImg() : ""} alt="" />
+        <div id="Movie-Info-Text">
           <p>
             {rightAnswer !== undefined ? movie.tomatoConsensus : movie.Plot}
           </p>

@@ -10,10 +10,8 @@ const Main = React.createClass({
       <div className="App">
         <div className="App-header">
           <img src={tomato} className="App-logo" alt="logo" />
-          <p className="App-intro">Lets Guess some movies!</p>
         </div>
         { React.cloneElement(this.props.children, this.props) }
-
       </div>
     );
   }
