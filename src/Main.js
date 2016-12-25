@@ -6,10 +6,11 @@ import './css/App.css';
 // React.cloneElement passes down props from Main to first child.
 const Main = React.createClass({
   render() {
+    console.log("testing", this.props.views);
     return (
       <div className="App">
         <div className="App-header">
-          <img src={tomato} className="App-logo" alt="logo" />
+          <img src={tomato} className={this.props.views.animation} alt="logo" />
         </div>
         { React.cloneElement(this.props.children, this.props) }
       </div>

@@ -14,4 +14,6 @@ export const GET_ERROR = "GET_ERROR";
 
 export const ADD_GUESS = "ADD_GUESS";
 
+export const SET_ANIMATION = "SET_ANIMATION";
+
 export const TOGGLE_WINDOW = "TOGGLE_WINDOW";

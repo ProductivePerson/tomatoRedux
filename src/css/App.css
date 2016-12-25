@@ -4,8 +4,13 @@
   justify-content: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
+.App-logo-infinite-spin {
+  animation: App-logo-spin infinite 2s linear;
+  height: 80px;
+}
+
+.App-logo-single-spin {
+  animation: App-logo-spin 2s linear;
   height: 80px;
 }
 

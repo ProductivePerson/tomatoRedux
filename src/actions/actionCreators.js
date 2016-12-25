@@ -27,6 +27,7 @@ export function getMovie(id) {
 
     // dispatch(hydrateMovie(JSON.parse(movieResults)));
     // dispatch(selectMovie());
+
     return api.getSingleMovie(id)
       .then((res) => {
         console.log("Successfully got a single movie", res);
@@ -80,6 +81,13 @@ export function newSearch() {
 export function selectMovie() {
   return {
     type: types.SELECT_MOVIE
+  };
+}
+
+export function setAnimation(style) {
+  return {
+    type: types.SET_ANIMATION,
+    style
   };
 }
 
