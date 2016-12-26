@@ -28,7 +28,7 @@ function views(state = {
       return Object.assign({}, state, {[action.windowType]: toggle});
 
     case types.SET_ANIMATION:
-      return Object.assign({}, state, {style: action.style});
+      return Object.assign({}, state, {animation: action.style});
 
     case types.GET_ERROR:
         return Object.assign({}, state, {isLoading: false, error: true});

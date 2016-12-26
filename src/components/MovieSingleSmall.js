@@ -11,12 +11,15 @@ class MovieSingleSmall extends Component {
     const { movie } = this.props;
     return (
       <div className="Movie-Window-Small" onClick={this.getSingleMovie.bind(this)}>
-        {/* <Col xs={6} md={4}> */}
+        <div>
           <Image className="Movie-Thumbnail" src={movie.Poster} responsive thumbnail/>
           <ControlLabel>
             {movie.Title} [{movie.Year}]
           </ControlLabel>
-        {/* </Col> */}
+        </div>
+        <div>
+          
+        </div>
       </div>
     );
   }

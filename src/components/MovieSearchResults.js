@@ -17,7 +17,7 @@ class MovieSearchResults extends Component {
           {/* <Grid> */}
           {this.props.movies.list.map((movie, idx) =>
             // <Row key={idx}>
-            <MovieSingleSmall movie={movie} getMovie={this.props.getMovie}/>
+            <MovieSingleSmall key={idx} movie={movie} getMovie={this.props.getMovie}/>
             // </Row>
           )}
           {/* </Grid> */}

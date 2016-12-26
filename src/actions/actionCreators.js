@@ -2,7 +2,7 @@ import * as types from './actionTypes';
 import * as api from './APIcalls';
 
 //TODO - remove temp data;
-import { searchResults, movieResults } from '../tempData';
+// import { searchResults, movieResults } from '../tempData';
 
 //SEARCH ACTIONS
 
@@ -13,6 +13,7 @@ export function searchMovies(text) {
     // dispatch(toggleWindow("search"));
     // dispatch(hydrateMovies(JSON.parse(searchResults)));
 
+    dispatch(setAnimation("App-logo-infinite-spin"));
     return api.getMovieList(text)
       .then((res) => {
         dispatch(toggleWindow("search"));
@@ -31,6 +32,7 @@ export function getMovie(id) {
     return api.getSingleMovie(id)
       .then((res) => {
         console.log("Successfully got a single movie", res);
+        dispatch(setAnimation("App-logo-single-spin"));
         dispatch(hydrateMovie(res.data));
         dispatch(selectMovie());
       })
